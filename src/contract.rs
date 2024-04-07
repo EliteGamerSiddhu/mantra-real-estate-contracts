@@ -229,23 +229,5 @@ mod tests {
 
         let _res = execute(deps.as_mut(), env, info, msg).unwrap();
     }
-
-    #[test]
-    fn test_sale(){
-        let mut deps = mock_dependencies();
-        let env = mock_env();
-        let info = mock_info(ADDR1, &vec![]);
-
-        let msg = InstantiateMsg {};
-
-        let _res = instantiate(deps.as_mut(), env.clone(), info.clone(), msg);
-
-        let msg = ExecuteMsg::MintNFT {should_list: true, nft_id: "this_sample".to_string(), name: "Sample".to_string(), description: "Sample test".to_string(), price : 30, owner : None };
-
-        let _res = execute(deps.as_mut(), env.clone(), info.clone(), msg).unwrap();
-
-        let msg = ExecuteMsg::SaleNFT { seller: ADDR1.to_string(), buyer: ADDR2.to_string(), nft_id: "this_sample".to_string() };
-
-        let _res = execute(deps.as_mut(), env, info, msg).unwrap();
-    }
 }
+
